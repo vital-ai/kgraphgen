@@ -1,0 +1,11 @@
+api_keys:
+    openai: "open ai key here"
+    newrelic: "new relic key here"
+    anyscale: "anyscale key here"
+    anthropic: "anthropic key here"
+    gemini: "gemini key here"
+    mistral: "mistral key here"
+    deepgram: "deepgram key here"
+
+
+

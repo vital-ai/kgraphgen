@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='kgraphgen',
-    version='0.0.1',
+    version='0.0.2',
     author='Marc Hadfield',
     author_email='marc@vital.ai',
     description='KGraph Generate',
@@ -19,6 +19,7 @@ setup(
             'pyyaml',
             'vital-ai-haley-kg>=0.1.4',
             'kgraphmemory>=0.0.5',
+            'kgraphservice>=0.0.6',
             'rdflib==7.0.0',
             'SPARQLWrapper==2.0.0',
             'networkx',

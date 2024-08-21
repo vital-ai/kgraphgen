@@ -1,1 +1,3 @@
-# kgraphgen
+# KGraphGen
+
+KGraphGen

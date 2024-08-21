@@ -20,6 +20,7 @@ setup(
             'vital-ai-haley-kg>=0.1.4',
             'kgraphmemory>=0.0.5',
             'kgraphservice>=0.0.6',
+            'vital-agent-kg-utils>=0.1.0',
             'rdflib==7.0.0',
             'SPARQLWrapper==2.0.0',
             'networkx',

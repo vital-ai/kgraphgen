@@ -6,6 +6,8 @@ class ExtractClient:
     def __init__(self, hostname: str, port: int):
         self.base_url = f"http://{hostname}:{port}/extract"
 
+    # switch to using agent utils for client
+
     def extract(self, payload) -> str:
         try:
             response = requests.post(self.base_url, json=payload)

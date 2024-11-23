@@ -1,3 +1,4 @@
+import os
 from collections import deque
 from typing import List
 import json
@@ -9,7 +10,6 @@ from ai_haley_kg_domain.model.KGEntityType import KGEntityType
 from ai_haley_kg_domain.model.KGInteraction import KGInteraction
 from kgraphmemory.kginteraction_graph import KGInteractionGraph
 from kgraphmemory.utils.uri_generator import URIGenerator
-from langchain_community.chat_models import ChatAnyscale
 from langchain_core.messages import SystemMessage
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.output_parsers.openai_functions import JsonOutputFunctionsParser, PydanticOutputFunctionsParser
@@ -46,11 +46,13 @@ def load_config():
 
 
 config = load_config()
-anyscale_api_key = config['api_keys']['anyscale']
+openai_api_key = config['api_keys']['openai']
+
+os.environ["OPENAI_API_KEY"] = openai_api_key
 
 # model_id = "mistralai/Mistral-7B-Instruct-v0.1"
 
-model_id = "mistralai/Mixtral-8x22B-Instruct-v0.1"
+# model_id = "mistralai/Mixtral-8x22B-Instruct-v0.1"
 
 # model_id = "mlabonne/NeuralHermes-2.5-Mistral-7B"
 
@@ -58,7 +60,7 @@ model_id = "mistralai/Mixtral-8x22B-Instruct-v0.1"
 
 # model_id = "codellama/CodeLlama-70b-Instruct-hf"
 
-base_url = "https://api.endpoints.anyscale.com/v1"
+# base_url = "https://api.endpoints.anyscale.com/v1"
 
 relation_extract_prompt = """
 You are an expert at extracting Entities and Relations.
@@ -298,11 +300,10 @@ def split_into_sentences(text):
 
 def get_model():
 
-    model = model = ChatAnyscale(
-        anyscale_api_base=base_url,
-        model_name=model_id,
-        verbose=True,
-        anyscale_api_key=anyscale_api_key)
+    model = ChatOpenAI(
+        model_name="gpt-4o-mini"
+    )
+
 
     return model
 

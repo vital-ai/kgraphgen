@@ -257,7 +257,7 @@ def get_genre_relationships(kgraph: KGInteractionGraph, genre: str, entity_list:
     llm = ChatOpenAI(
         openai_api_key=openai_api_key,
         temperature=0,
-        model="gpt-4-turbo-preview")
+        model_name="gpt-4-turbo-preview")
 
     # openai_functions = [convert_pydantic_to_openai_function(GenreRelationshipListSchema)]
 
@@ -380,7 +380,7 @@ def get_named_entities_text(kgraph: KGInteractionGraph, text: str, genre: str, g
     llm = ChatOpenAI(
         openai_api_key=openai_api_key,
         temperature=0,
-        model="gpt-4-turbo-preview")
+        model_name="gpt-4-turbo-preview")
 
     # openai_functions = [convert_pydantic_to_openai_function(NamedEntityListSchema)]
 
@@ -485,7 +485,7 @@ def get_relationships_text(kgraph: KGInteractionGraph, text, entity_list: list, 
         openai_api_key=openai_api_key,
         max_tokens=3_000,
         temperature=0,
-        model="gpt-4-turbo-preview")
+        model_name="gpt-4-turbo-preview")
 
     # openai_functions = [convert_pydantic_to_openai_function(RelationshipListSchema)]
 

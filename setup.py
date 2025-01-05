@@ -13,12 +13,12 @@ setup(
     license='Apache License 2.0',
     install_requires=[
             'requests>=2.31.0',
-            'vital-ai-vitalsigns>=0.1.26',
+            'vital-ai-vitalsigns>=0.1.27',
             'vital-ai-domain>=0.1.4',
             'six',
             'pyyaml',
-            'vital-ai-haley-kg>=0.1.4',
-            'kgraphmemory>=0.0.5',
+            'vital-ai-haley-kg>=0.1.22',
+            'kgraphmemory>=0.0.7',
             'kgraphservice>=0.0.6',
             'vital-agent-kg-utils>=0.1.0',
             'rdflib==7.0.0',
@@ -37,7 +37,9 @@ setup(
             'numpy==1.26.4',
             'beautifulsoup4==4.12.3',
             'wikipedia-api==0.6.0',
-            'spacy==3.7.4'
+            'spacy==3.7.4',
+            'nltk',
+            'sentence_transformers'
     ],
     classifiers=[
         "Programming Language :: Python :: 3.10",

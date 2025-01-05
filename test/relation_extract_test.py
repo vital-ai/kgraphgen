@@ -301,7 +301,9 @@ def split_into_sentences(text):
 def get_model():
 
     model = ChatOpenAI(
-        model_name="gpt-4o-mini"
+        model_name="gpt-4o-mini",
+        # openai_api_base="http://localhost:6666/v1/"
+        # openai_api_base="http://chat-saas-prod-inference-1.private:8888"
     )
 
 
@@ -503,13 +505,26 @@ def test_one():
 
     model_instance = get_model()
 
+    # this is a list fo tuple instead of dict
+    # TODO response format changed?
     responses = asyncio.run(process_sentence(context, sentence, model_instance, relation_extract_prompt))
 
     for item in responses:
-        if "relations" in item:
-            relation_list.extend(item["relations"])
-        if "status" in item:
-            print(f"Status: {item['status']}")
+
+        print(f"Item: {item}")
+
+        try:
+            content_value = item[1]
+
+            data = json.loads(content_value)
+
+            # Access the properties
+            status = data.get("status")  # "Entities and relations extracted successfully."
+            entity_list = data.get("entities", [])  # List of entities
+            relation_list = data.get("relations", [])  # List of relations
+
+        except Exception as e:
+            print(e)
 
     for relation in relation_list:
 
@@ -525,8 +540,8 @@ def main():
 
     print('KGraphGen Relation Extract Test')
 
-    # test_one()
-    # exit(0)
+    test_one()
+    exit(0)
 
     # have N entity types in graph w/ embedding
     # have N relation types in graph w/ embedding
